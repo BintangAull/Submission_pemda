@@ -1,0 +1,13 @@
+# Virtual env
+.venv/
+env/
+
+# Data
+*.csv
+
+# Secrets
+*.json
+
+# OS
+.DS_Store
+Thumbs.db
