@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import random
 import time
-
+from datetime import datetime
 from config import (
     BASE_URL,
     MAX_PAGE,
@@ -80,6 +80,10 @@ def parse_products(html):
     for card in cards:
 
         try:
+
+            # timestamp
+            scrape_at = datetime.now().isoformat()
+
             # title
             title = card.find(
                 "h3",
@@ -103,12 +107,13 @@ def parse_products(html):
 
             # struktur final data
             product = {
-                "title": title,
-                "price": price,
-                "rating": rating,
-                "colors": colors,
-                "size": size,
-                "gender": gender
+                "Title": title,
+                "Price": price,
+                "Rating": rating,
+                "Colors": colors,
+                "Size": size,
+                "Gender": gender,
+                "Timestamp":scrape_at
             }
 
             products.append(product)
