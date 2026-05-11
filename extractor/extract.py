@@ -13,7 +13,6 @@ from config import (
 )
 
 session = requests.Session()
-
 session.headers.update(HEADERS)
 
 # Fungsi ini untuk melakukan request ke

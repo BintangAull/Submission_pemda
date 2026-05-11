@@ -206,6 +206,28 @@ def clean_gender(df):
         print(f"Error at clean_gender: {e}")
         return df
 
+# # clean encoding / weird characters
+# def clean_utf8(df):
+#     try:
+#         print("\nCleaning UTF-8 Encoding")
+#
+#         for column in df.columns:
+#             if df[column].dtype == "object":
+#                 df[column] = df[column].apply(
+#                     lambda x: str(x).encode(
+#                         "ascii",        # ← ganti utf-8 ke ascii
+#                         errors="ignore" # karakter non-ASCII (termasuk ⭐) dibuang
+#                     ).decode(
+#                         "ascii",
+#                         errors="ignore"
+#                     ).strip()           # ← strip whitespace sisa
+#                 )
+#
+#         return df
+#
+#     except Exception as e:
+#         print(f"Error at clean_utf8: {e}")
+#         raise
 
 
 # Standarisasi data
@@ -250,6 +272,10 @@ def convert_datatypes(df):
 
         df["Gender"] = df["Gender"].astype("object")
 
+        df["Timestamp"] = pd.to_datetime(
+            df["Timestamp"],
+            errors="coerce"
+        )
         return df
 
     except Exception as e:
@@ -321,6 +347,9 @@ def transform_products(raw_df):
 
         # Standarisasi data
         clean_df = standardize_data(clean_df)
+
+        # clean utf-8
+        # clean_df = clean_utf8(clean_df)
 
         # Konversi tipe data
         clean_df = convert_datatypes(clean_df)

@@ -1,0 +1,18 @@
+opsi file_test:
+- test_load.py
+- test_transform.py
+- test_extract.py
+
+# [PENTING] silahkan buat file .env untuk konfigurasi database anda contoh isi file .env ada pada .env.example
+
+# Menjalankan skrip
+python main.py
+
+# Menjalankan unit test pada folder tests
+python -m pytest tests/file_test.py(silahkan pilih)
+
+# Menjalankan test coverage pada folder tests
+python -m pytest tests/file_test.py(silahkan pilih) -v --cov --cov-report=html
+
+# Url Google Sheets:
+https://docs.google.com/spreadsheets/d/1SdQwl5ajFkV-7sbwyFlSMWOtIgQNs420XKaP4afFEdg/edit?usp=sharing

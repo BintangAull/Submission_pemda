@@ -11,7 +11,7 @@ ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 if ROOT_DIR not in sys.path:
     sys.path.insert(0, ROOT_DIR)
 
-# ── Config stub ────────────────────────────────────────────────────────────────
+# Config stub
 # Harus diinjeksi ke sys.modules SEBELUM mengimport extractor.extract,
 # karena extract.py melakukan `import config` saat modul dimuat.
 config_stub = types.ModuleType("config")

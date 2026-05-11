@@ -4,6 +4,11 @@ import os
 import pandas as pd
 
 from extractor.extract import scrape_products
+from loader.load import (
+    save_to_csv,
+    save_to_postgresql,
+    save_to_gsheet_by_id
+)
 from transformer.transform import transform_products
 
 
@@ -63,7 +68,7 @@ def main():
             raw_df.to_csv(
                 RAW_DATA_PATH,
                 index=False,
-                encoding="utf-8-sig"
+                encoding="utf-8"
             )
 
             print("\nRaw CSV berhasil disimpan")
@@ -89,13 +94,23 @@ def main():
 
     try:
 
-        clean_df.to_csv(
-            CLEAN_DATA_PATH,
-            index=False,
-            encoding="utf-8-sig"
+        # simpan ke file csv
+        save_to_csv(clean_df, CLEAN_DATA_PATH)
+
+        # simpan ke postgresql
+        save_to_postgresql(
+            clean_df,
+            "fashion_products",
         )
 
-        print("\nClean CSV berhasil disimpan")
+        # simpan ke google sheet
+        save_to_gsheet_by_id(
+            df=clean_df,
+            credentials_file='google-sheets-api.json',
+            spreadsheet_id='1SdQwl5ajFkV-7sbwyFlSMWOtIgQNs420XKaP4afFEdg',
+            sheet_name="Sheet1"
+        )
+
 
     except Exception as e:
 
