@@ -2,7 +2,7 @@
 .venv/
 .env
 # Data
-*.csv
+
 
 # Secrets
 requirements.txt
