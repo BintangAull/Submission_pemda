@@ -1,12 +1,11 @@
 # Virtual env
 .venv/
-env/
-
+.env
 # Data
 *.csv
 
 # Secrets
-*.json
+
 
 # OS
 .DS_Store
