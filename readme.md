@@ -105,7 +105,7 @@ pip install -r requirements.txt
 Buat file `.env` berdasarkan `.env.example`:
 
 ```env
-DATABASE_URL=postgresql+psycopg2://postgres:12345678@localhost:5432/fashion_db
+DATABASE_URL=postgresql+psycopg2://user_db_anda:pass_db_anda@localhost:5432/nama_db_anda
 ```
 
 | Variable     | Deskripsi                                           |
